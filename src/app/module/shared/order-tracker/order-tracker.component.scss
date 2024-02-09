@@ -1,0 +1,15 @@
+.order-tracker {
+    display: flex;
+    justify-content: space-between;
+}
+
+.step {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+}
+
+.step.active {
+    color: #4caf50;
+    color: #fff;
+}
