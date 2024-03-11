@@ -1,10 +1,11 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Store, createSelector, select } from '@ngrx/store';
 import { AppState } from 'src/app/Models/AppState';
 import { AuthComponent } from '../../auth/auth.component';
 import { UserService } from 'src/app/state/User/user.service';
+import { ProductService } from 'src/app/state/Product/product.service';
 // import { AuthComponent } from '../Module/auth/auth.component';
 
 // import {
@@ -23,9 +24,14 @@ export class NavbarComponent implements OnInit {
     private dialog: MatDialog,
     private router: Router,
     private userService: UserService,
-    private store: Store<AppState> //
-  ) // private _snackBar: MatSnackBar
-  { }
+    private productService: ProductService,
+    private store: Store<AppState> // // private _snackBar: MatSnackBar
+  ) {}
+
+  @Input() title: string = '';
+  @Input() subtitle: string = '';
+  @Input() logoUrl: string = '';
+  @Input() menuItems: string[] = [];
 
   isProfileMenuOpen: boolean = false;
   userProfile: any;
@@ -62,37 +68,13 @@ export class NavbarComponent implements OnInit {
   closeNavbarContent() {
     this.isNavbarContentOpen = false;
   }
+  
 
   ngOnInit(): void {
-    if (localStorage.getItem('jwt')) this.userService.getUserProfile();
-
-    this.store
-      .pipe(select((store: AppState) => store.user))
-      .subscribe((user) => {
-        this.userProfile = user.userProfile;
-        if (user.userProfile) {
-          this.dialog.closeAll();
-        }
-      });
+    
   }
   navigateToCart = () => {
     this.router.navigate(['cart']);
-  };
-
-  navigateTo(path: any) {
-    this.router.navigate([path]);
-  }
-
-  openLoginModal(): void {
-    this.dialog.open(AuthComponent, {
-      // width: '400px',
-      disableClose: false,
-    });
-  }
-
-  handleLogout = () => {
-    console.log('logout success');
-    this.userService.logout();
   };
 
   isNavbarContentOpen = false;

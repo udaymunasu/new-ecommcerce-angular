@@ -1,14 +1,35 @@
-<div class="mt-[4rem]">
-    <app-main-carousel></app-main-carousel>
-</div>
+<div class="home-content">
+    <div class="categories">
+        <button class="open-button" mat-button (click)="openNavbarContent('men')">
+            Men
+        </button>
+
+        <button class="open-button" mat-button (click)="openNavbarContent('women')">
+            Women
+        </button>
+    </div>
+
+    <!-- content -->
+    <div>
+        <div *ngIf="isNavbarContentOpen" class="modal-container">
+            <app-navbar-content [selectedSection]="currentSection"></app-navbar-content>
+        </div>
+    </div>
+
+    <div class="main-carousel">
+        <app-main-carousel></app-main-carousel>
+    </div>
 
 
-<div>
-    <app-product-card-slider title="Men's Jeans" [products]="products"></app-product-card-slider>
-    <app-product-card-slider title="Women's Gouns"  [products]="gouns"></app-product-card-slider>
-    <app-product-card-slider title="Lehanga Choli" [products]="saree"></app-product-card-slider>
-    <!-- <app-product-card-slider title="Men's T-Shirt"></app-product-card-slider> -->
-    <app-product-card-slider title="Men's Kurta" [products]="men_kurta"></app-product-card-slider>
-    <app-product-card-slider title="Shoes" [products]="shoes"></app-product-card-slider> 
+    <div>
+        <app-product-card-slider title="Men's Jeans" [products]="products"></app-product-card-slider>
+        <app-product-card-slider title="Women's Gouns" [products]="gouns"></app-product-card-slider>
+        <app-product-card-slider title="Lehanga Choli" [products]="saree"></app-product-card-slider>
+        <!-- <app-product-card-slider title="Men's T-Shirt"></app-product-card-slider> -->
+        <app-product-card-slider title="Men's Kurta" [products]="men_kurta"></app-product-card-slider>
+        <app-product-card-slider title="Shoes" [products]="shoes"></app-product-card-slider>
+
+    </div>
+
 
 </div>

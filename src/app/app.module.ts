@@ -23,6 +23,10 @@ import { AdminModule } from './module/admin/admin.module';
 import { AuthModule } from './module/auth/auth.module';
 import { FetureModule } from './module/feture/feture.module';
 import { SharedModule } from './module/shared/shared.module';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [AppComponent,
@@ -46,6 +50,10 @@ import { SharedModule } from './module/shared/shared.module';
     }),
     HttpClientModule,
     // StoreDevtoolsModule.instrument(),
+    MatIconModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent],

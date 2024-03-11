@@ -17,6 +17,10 @@ export class HomeComponent implements OnInit {
   saree:any
   men_kurta:any
   shoes:any
+  isProfileMenuOpen: boolean = false;
+  userProfile: any;
+  isNavbarContentOpen = false;
+  currentSection!: string;
 
   constructor() {
     this.products = productdata.slice(0, 5);
@@ -26,6 +30,12 @@ export class HomeComponent implements OnInit {
     this.shoes=mensShoesPage1.slice(0,5)
   }
   ngOnInit(): void {
+  }
+
+  openNavbarContent(section: string) {
+    this.isNavbarContentOpen = !this.isNavbarContentOpen ;
+    this.currentSection = section;
+    console.log('currentSection section ', this.currentSection);
   }
 
 }

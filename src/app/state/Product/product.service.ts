@@ -35,7 +35,7 @@ export class ProductService {
     private http: HttpClient,
     private router: Router,
     private route: ActivatedRoute
-  ) { }
+  ) {}
 
   findProductsByCategory(reqData: ProductRequest) {
     const {
@@ -170,5 +170,15 @@ export class ProductService {
       )
       .subscribe((action) => this.store.dispatch(action));
   }
-}
 
+  getAllCategoriesBy() {
+    return this.http.get(`${this.API_BASE_URL}/api/categories/list`);
+  }
+
+  getCategoriesById(id: any) {
+    const headers = this.getHeaders();
+    return this.http.get(`${this.API_BASE_URL}/api/categories/${id}`, {
+      headers,
+    });
+  }
+}

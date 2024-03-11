@@ -5,3 +5,84 @@
 .snackBar {
     color: greenyellow;
 }
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #333;
+    color: #fff;
+
+    .logo {
+        display: flex;
+        align-items: center;
+
+        .logo-image {
+            max-width: 60px;
+        }
+    }
+
+
+
+    .title {
+        flex-grow: 1;
+        margin: 0 20px;
+        text-align: start;
+
+        h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        h2 {
+            font-size: 18px;
+            margin: 0;
+        }
+    }
+
+    .menu {
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+
+            li {
+                margin-right: 10px;
+                font-size: 16px;
+
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+
+    .custom-content {
+        display: flex;
+        margin-left: auto;
+    }
+}
+
+// Media query for responsiveness
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        text-align: center;
+
+        .title {
+            margin: 10px 0;
+        }
+
+        .menu {
+            ul {
+                flex-direction: column;
+
+                li {
+                    margin: 5px 0;
+                }
+            }
+        }
+    }
+}

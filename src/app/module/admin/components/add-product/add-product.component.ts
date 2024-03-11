@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { ProductService } from 'src/app/state/Product/product.service';
 
 @Component({
   selector: 'app-add-product',
@@ -7,9 +9,43 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddProductComponent implements OnInit {
 
-  constructor() { }
 
   ngOnInit(): void {
+  }
+  
+  productForm: FormGroup 
+ 
+
+
+
+  constructor(private formBuilder: FormBuilder, private productService:ProductService) {
+    this.productForm = this.formBuilder.group({
+      imageUrl: '',
+      brand: '',
+      title: '',
+      color: '',
+      quantity: null,
+      price: null,
+      discountedPrice: null,
+      discountPersent: null,
+      topLavelCategory: '',
+      secondLavelCategory: '',
+      thirdLavelCategory: '',
+      description: '',
+      size: ''
+    });
+   }
+
+  
+
+  onSubmit(): void {
+    if (this.productForm.valid) {
+      const formData = this.productForm.value;
+      formData.size=[{size:formData.size,quantity:formData.quantity}]
+
+      this.productService.createProduct(formData)
+      console.log(formData);
+    }
   }
 
 }
