@@ -33,9 +33,14 @@ export class HomeComponent implements OnInit {
   }
 
   openNavbarContent(section: string) {
-    this.isNavbarContentOpen = !this.isNavbarContentOpen ;
-    this.currentSection = section;
-    console.log('currentSection section ', this.currentSection);
-  }
+    if (this.currentSection !== section) {
+        this.currentSection = section; // Assign the section dynamically
+        this.isNavbarContentOpen = true; // Open content when a button is clicked
+    } else {
+      this.isNavbarContentOpen = false; // Close content
+      this.currentSection = ''; // Reset current section
+    }
+}
+
 
 }

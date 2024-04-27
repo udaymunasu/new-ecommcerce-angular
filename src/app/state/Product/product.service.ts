@@ -35,7 +35,7 @@ export class ProductService {
     private http: HttpClient,
     private router: Router,
     private route: ActivatedRoute
-  ) {}
+  ) { }
 
   findProductsByCategory(reqData: ProductRequest) {
     const {
@@ -65,10 +65,8 @@ export class ProductService {
 
     const headers = this.getHeaders();
 
-    return this.http
-      .get(`${this.API_BASE_URL}/api/products`, { headers, params })
-      .pipe(
-        map((data: any) => findProductsByCategorySuccess({ payload: data })),
+    return this.http.get(`${this.API_BASE_URL}/api/products`, { headers, params })
+      .pipe(map((data: any) => findProductsByCategorySuccess({ payload: data })),
         catchError((error: any) => {
           return of(
             findProductsByCategoryFailure(
@@ -79,7 +77,7 @@ export class ProductService {
           );
         })
       )
-      .subscribe((action) => this.store.dispatch(action));
+      .subscribe((action) => console.log("this.store.dispatch(action)", this.store.dispatch(action)));
   }
 
   findProductById(productId: any) {

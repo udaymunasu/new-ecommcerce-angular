@@ -92,15 +92,13 @@ export class ProductsComponent implements OnInit {
       }
     );
 
-    this.store
-      .pipe(select((store: AppState) => store.product))
-      .subscribe((product) => {
-        this.fetchedProducts = product.products.content;
-
-        this.totalPages = product.products.totalElements;
-
-        console.log('products store ', product, this.fetchedProducts);
-      });
+    this.store.pipe(
+      select((store) => store.product) // Assuming 'product' is a property in your AppState
+    ).subscribe((product) => {
+      this.fetchedProducts = product.products.content;
+      this.totalPages = product.products.totalElements;
+      console.log('products store ', product, this.fetchedProducts);
+    });
   }
 
   ngOnDestroy() {
